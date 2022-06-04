@@ -26,6 +26,44 @@
 
 > gunicorn --workers 4 myapp:app
 
+
+```
+user@user-virtual-machine:~/Desktop/2022-MAI-Backend-D-Ivanova$ wrk -t12 -c400 -d30s http://localhost/public/index.html
+Running 30s test @ http://localhost/public/index.html
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   121.65ms  237.17ms   1.26s    86.17%
+    Req/Sec     1.51k   506.29     4.20k    70.70%
+  536980 requests in 30.10s, 193.55MB read
+Requests/sec:  17840.04
+Transfer/sec:      6.43MB
+```
+
+```
+wrk -t12 -c400 -d30s http://localhost/backend/
+Running 30s test @ http://localhost/backend/
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   202.06ms   76.41ms 681.07ms   86.35%
+    Req/Sec   170.78     99.27   740.00     59.54%
+  60370 requests in 30.10s, 10.59MB read
+Requests/sec:   2005.82
+Transfer/sec:    360.36KB
+```
+
+```
+wrk -t12 -c400 -d30s http://localhost:8000
+Running 30s test @ http://localhost:8000
+  12 threads and 400 connections
+  Thread Stats   Avg      Stdev     Max   +/- Stdev
+    Latency   218.85ms  163.26ms   1.24s    89.29%
+    Req/Sec   180.56    107.43   460.00     52.77%
+  60150 requests in 30.08s, 9.52MB read
+Requests/sec:   1999.65
+Transfer/sec:    324.18KB
+```
+
+
 ## Лабораторная работа 3
 
 - Создать и запустить Django-проект — 2 балла;
