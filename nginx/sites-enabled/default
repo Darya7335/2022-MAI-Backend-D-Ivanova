@@ -1,0 +1,33 @@
+upstream backend {
+	server localhost:8000 weight=1 max_fails=3 fail_timeout=360s;
+}
+
+
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	root /var/www/html;
+
+	server_name localhost;
+
+	#proxy_set_header Host $host;
+	#proxy_set_header X-Real-IP $remote_addr;
+
+	location /public/ {
+		alias /home/user/Desktop/2022-MAI-Backend-D-Ivanova/data/;
+	}
+
+	location /backend/ {
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_pass http://backend;
+	}
+
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+	
+}
+

@@ -1,4 +1,4 @@
-from cache import LRUCache
+from LRUcache.cache import LRUCache
 
 cache = LRUCache(100)
 cache.set('Jesse', 'Pinkman')
