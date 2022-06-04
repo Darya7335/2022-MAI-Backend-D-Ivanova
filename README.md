@@ -71,6 +71,12 @@ Transfer/sec:    324.18KB
 - В конфиге nginx создать location, которое будет ходить на Django-приложение — 3 балла
 - Обрабатывать только нужные методы (GET/POST) — 2 балла.
 
+> django-admin startproject project
+
+>./manage.py startapp Movies
+
+> python3 manage.py runserver
+
 ## Лабораторная работа 4
 
 - Установить Postgres, создать нового пользователя и БД и настроить доступ — 5 баллов;

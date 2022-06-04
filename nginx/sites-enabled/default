@@ -24,6 +24,9 @@ server {
 		proxy_pass http://backend;
 	}
 
+	location /jango/ {
+			proxy_pass http://jango;
+	}
 
 	location / {
 		try_files $uri $uri/ =404;
