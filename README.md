@@ -219,7 +219,7 @@ b. База данных (3 балла),
 
   > docker ps -a
   >
-  >docker ps -a | awk '{ print $1}' | xargs -I{} docker rm {}
+  > docker ps -a | awk '{ print $1}' | xargs -I{} docker rm {}
 
 > Преподаватель должен иметь возможность, имея установленными только git, docker и docker-compose склонировать проект, выполнить команды `make migrate` и увидеть успешную миграцию.
 
