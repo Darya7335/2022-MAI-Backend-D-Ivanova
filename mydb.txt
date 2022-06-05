@@ -1,0 +1,57 @@
+usrdb=> \dt
+                  List of relations
+ Schema |            Name            | Type  | Owner 
+--------+----------------------------+-------+-------
+ public | Movies_country             | table | usr1
+ public | Movies_director            | table | usr1
+ public | Movies_movie               | table | usr1
+ public | auth_group                 | table | usr1
+ public | auth_group_permissions     | table | usr1
+ public | auth_permission            | table | usr1
+ public | auth_user                  | table | usr1
+ public | auth_user_groups           | table | usr1
+ public | auth_user_user_permissions | table | usr1
+ public | django_admin_log           | table | usr1
+ public | django_content_type        | table | usr1
+ public | django_migrations          | table | usr1
+ public | django_session             | table | usr1
+(13 rows)
+
+usrdb=> \d "Movies_country"
+                                       Table "public.Movies_country"
+   Column    |         Type          | Collation | Nullable |                   Default                    
+-------------+-----------------------+-----------+----------+----------------------------------------------
+ id          | bigint                |           | not null | nextval('"Movies_country_id_seq"'::regclass)
+ CountryName | character varying(50) |           | not null | 
+Indexes:
+    "Movies_country_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE ""Movies_movie"" CONSTRAINT "Movies_movie_CountryID_id_a79ec143_fk_Movies_country_id" FOREIGN KEY ("CountryID_id") REFERENCES "Movies_country"(id) DEFERRABLE INITIALLY DEFERRED
+
+usrdb=> \d "Movies_director"
+                                       Table "public.Movies_director"
+    Column    |         Type          | Collation | Nullable |                    Default                    
+--------------+-----------------------+-----------+----------+-----------------------------------------------
+ id           | bigint                |           | not null | nextval('"Movies_director_id_seq"'::regclass)
+ DirectorName | character varying(50) |           | not null | 
+Indexes:
+    "Movies_director_pkey" PRIMARY KEY, btree (id)
+Referenced by:
+    TABLE ""Movies_movie"" CONSTRAINT "Movies_movie_DirectorID_id_bef20af3_fk_Movies_director_id" FOREIGN KEY ("DirectorID_id") REFERENCES "Movies_director"(id) DEFERRABLE INITIALLY DEFERRED
+
+usrdb=> \d "Movies_movie"
+                                        Table "public.Movies_movie"
+    Column     |         Type          | Collation | Nullable |                  Default                   
+---------------+-----------------------+-----------+----------+--------------------------------------------
+ id            | bigint                |           | not null | nextval('"Movies_movie_id_seq"'::regclass)
+ title         | character varying(50) |           | not null | 
+ year          | character varying(10) |           | not null | 
+ CountryID_id  | bigint                |           |          | 
+ DirectorID_id | bigint                |           |          | 
+Indexes:
+    "Movies_movie_pkey" PRIMARY KEY, btree (id)
+    "Movies_movie_CountryID_id_a79ec143" btree ("CountryID_id")
+    "Movies_movie_DirectorID_id_bef20af3" btree ("DirectorID_id")
+Foreign-key constraints:
+    "Movies_movie_CountryID_id_a79ec143_fk_Movies_country_id" FOREIGN KEY ("CountryID_id") REFERENCES "Movies_country"(id) DEFERRABLE INITIALLY DEFERRED
+    "Movies_movie_DirectorID_id_bef20af3_fk_Movies_director_id" FOREIGN KEY ("DirectorID_id") REFERENCES "Movies_director"(id) DEFERRABLE INITIALLY DEFERRED

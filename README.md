@@ -144,13 +144,9 @@ Transfer/sec: 324.18KB
   
 
 > django-admin startproject project
-
-  
-
+>
 >./manage.py startapp Movies
-
-  
-
+>
 > python3 manage.py runserver
 
   
@@ -178,27 +174,30 @@ Transfer/sec: 324.18KB
   
 
 > Процеc создания пользователя - createusr
-> Процесс создание базы данных - createdb.sql
+>
+> Описание базы данных - mydb.txt
 
   
 
     ./manage.py migrate
     ./manage.py createsuperuser
-    ./manage runserver
+    ./manage.py runserver
+
+    ./manage.py showmigrations Movies
 
   
 
 ## Лабораторная работа 5
 
-  
+
 
 - Реализовать методы для:
 
-a. Поиска пользователей
+a. Вывод всех фильмов/режисёров/стран
 
-b. Создания персонального чата
+b. Добавление фильма/режисёра/страну
 
-c. Получения списка чатов
+c. Поиск по названию фильма, по году выхода, по режисёру
 
   
 

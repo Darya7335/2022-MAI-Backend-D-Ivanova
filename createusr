@@ -11,3 +11,13 @@ postgres=# \q
 su - usr1
 psql -d postgres
 postgres=> psql --host=localhost --user=usr1 usrdb
+
+
+su - usr1
+psql -d postgres
+\list
+\connect usrdb
+\dt
+\d "Movies_country"
+\d "Movies_movie"
+ \d "Movies_director"

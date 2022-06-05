@@ -1,25 +1,18 @@
-"""project URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path
-from Movies.views import movie_index, movie_page
-
+from Movies.views import movie_index, movie_page, all_directors, add_director, all_countries, add_country, all_movies, add_movie, find_movies, find_by_director, find_by_year
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', movie_index, name='home'),
     path('index', movie_index, name='home'),   
-    path('movies', movie_page, name='movie'), 
+    path('movie', movie_page, name='movie'), 
+    path('directors', all_directors, name='Режисёры'),
+    path('add-d', add_director, name='Добавление режисёра'),
+    path('countries', all_countries, name='Страны'),
+    path('add-с', add_country, name='Добавление страны'),
+    path('movies', all_movies, name='Фильмы'),
+    path('add-m', add_movie, name='Добавление фильма'),
+    path('find-movie', find_movies, name='Поиск фильма'),
+    path('find-by-director', find_by_director, name='Поиск по режисёру'),
+    path('find-by-year', find_by_year, name='Поиск по году'),
 ]
