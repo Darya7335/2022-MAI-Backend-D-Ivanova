@@ -11,10 +11,10 @@ def movie_index(request):
 @csrf_exempt 
 def movie_page(request):
     if request.method == "GET":
-        name = request.GET.get("name", "Interstate 60")
+        name = request.GET.get("name", "Трасса 60")
         year = request.GET.get("year", "2001")
         return JsonResponse({"name": name, "year": year})
     elif request.method == "POST":
-        name = request.GET.get("name", "Cruella")
+        name = request.GET.get("name", "Круелла")
         year = request.GET.get("year", "2021")
         return JsonResponse({"name": name, "year": year, "status": "OK"})
